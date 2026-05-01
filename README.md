@@ -89,6 +89,4 @@ docs/           Architecture and prompt/plan notes
 
 ## GitHub Link
 
-Add your repository URL here before submission:
-
-`https://github.com/<your-username>/<repo-name>`
+https://github.com/akash52004?tab=repositories
