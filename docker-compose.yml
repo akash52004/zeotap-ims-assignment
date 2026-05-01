@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      IMS_DATA_DIR: /data
+      IMS_RATE_LIMIT_PER_MINUTE: 12000
+      IMS_CORS_ORIGINS: http://localhost:5173,http://localhost:8080
+    volumes:
+      - ims-data:/data
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_API_BASE_URL: ""
+    ports:
+      - "5173:5173"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  ims-data:

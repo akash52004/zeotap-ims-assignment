@@ -1,0 +1,38 @@
+[
+  {
+    "component_id": "RDBMS_PRIMARY_01",
+    "component_type": "RDBMS",
+    "message": "Primary database connections exhausted",
+    "latency_ms": 5400,
+    "error_code": "DB_POOL_TIMEOUT",
+    "payload": {
+      "region": "ap-south-1",
+      "database": "customer-profile",
+      "active_connections": 500,
+      "max_connections": 500
+    }
+  },
+  {
+    "component_id": "MCP_HOST_07",
+    "component_type": "MCP_HOST",
+    "message": "MCP host failed health probe after upstream database timeout",
+    "latency_ms": 2600,
+    "error_code": "MCP_HEALTH_DEGRADED",
+    "payload": {
+      "region": "ap-south-1",
+      "host": "mcp-07",
+      "probe": "readiness"
+    }
+  },
+  {
+    "component_id": "CACHE_CLUSTER_01",
+    "component_type": "CACHE",
+    "message": "Cache miss storm detected during database outage",
+    "latency_ms": 900,
+    "error_code": "CACHE_MISS_STORM",
+    "payload": {
+      "hit_rate": 0.31,
+      "cluster": "redis-main"
+    }
+  }
+]
